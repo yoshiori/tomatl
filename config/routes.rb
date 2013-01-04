@@ -59,5 +59,5 @@ Pomodoro::Application.routes.draw do
 
   # OmniAuth用
   match "/auth/:provider/callback" => "sessions#callback"
-  match "/logout" => "sessions#destroy", :as => :logou
+  match "/logout" => "sessions#destroy", :as => :logout
 end

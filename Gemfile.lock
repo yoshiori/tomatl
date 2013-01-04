@@ -54,6 +54,12 @@ GEM
     guard-rspec (2.3.3)
       guard (>= 1.1)
       rspec (~> 2.11)
+    haml (3.1.7)
+    haml-rails (0.3.5)
+      actionpack (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+      haml (~> 3.1)
+      railties (>= 3.1, < 4.1)
     hashie (1.2.0)
     hike (1.2.1)
     httpauth (0.2.0)
@@ -167,6 +173,7 @@ DEPENDENCIES
   growl
   guard
   guard-rspec
+  haml-rails
   jquery-rails
   libnotify
   omniauth-github

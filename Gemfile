@@ -30,6 +30,7 @@ end
 
 gem 'jquery-rails'
 
+gem "haml-rails"
 gem 'omniauth-github'
 
 # To use ActiveModel has_secure_password

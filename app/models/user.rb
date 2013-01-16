@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessible :image, :name, :nickname, :uid
 
+  has_many :tasks
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.uid = auth["uid"]

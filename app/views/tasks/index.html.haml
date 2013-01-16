@@ -1,1 +1,10 @@
-
+= form_for @task ||= current_user.tasks.build do |f|
+  - if @task.errors.any?
+    - @task.errors.full_messages.each do |message|
+      .alert.alert-error= message
+  .input-append
+    = f.text_field :name
+    = f.submit "submit", :class => :btn
+%ul
+  - @tasks.each do |task|
+    %li= task.name

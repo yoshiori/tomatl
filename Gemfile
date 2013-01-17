@@ -25,6 +25,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'guard'
   gem 'guard-rspec'
+  gem 'rb-fsevent', '~> 0.9.1'
   gem 'growl', :require => false # for Mac
   gem 'libnotify', :require => false # for *nix
 end

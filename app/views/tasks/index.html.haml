@@ -4,7 +4,9 @@
       .alert.alert-error= message
   .input-append
     = f.text_field :name
+    = f.select :plan, 1..9, {}, :class => :span1
     = f.submit "submit", :class => :btn
 %ul
   - @tasks.each do |task|
     %li= task.name
+    = task.plan

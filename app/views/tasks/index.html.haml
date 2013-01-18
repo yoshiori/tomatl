@@ -4,9 +4,15 @@
       .alert.alert-error= message
   .input-append
     = f.text_field :name
-    = f.select :plan, 1..9, {}, :class => :span1
+    = f.select :plan, (1..9).map{|i| "#{i} #{'pomodoro'.pluralize(i)}"}, {}, :class => :span2
     = f.submit "submit", :class => :btn
-%ul
-  - @tasks.each do |task|
-    %li= task.name
-    = task.plan
+%table.table.table-striped
+  %thead
+    %tr
+      %th task
+      %th plan
+  %tbody
+    - @tasks.each do |task|
+      %tr
+        %td= task.name
+        %td= "#{task.plan} #{'pomodoro'.pluralize(task.plan)}"

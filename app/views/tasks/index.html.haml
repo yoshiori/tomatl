@@ -4,15 +4,25 @@
       .alert.alert-error= message
   .input-append
     = f.text_field :name
-    = f.select :plan, (1..9).map{|i| "#{i} #{'pomodoro'.pluralize(i)}"}, {}, :class => :span2
+    = f.select :plan, (1..9).map{|i| ["#{i} #{'pomodoro'.pluralize(i)}", i]}, {}, :class => :span2
     = f.submit "submit", :class => :btn
 %table.table.table-striped
   %thead
     %tr
+      %th.span1 #
       %th task
       %th plan
   %tbody
     - @tasks.each do |task|
       %tr
-        %td= task.name
+        %td.span1
+          - unless task.finish?
+            = link_to finish_task_path(task), :method => :post, :class => %w(btn btn-mini btn-success) do
+              %i.icon-white.icon-ok
+          - else
+            %a.btn.btn-mini.btn-success
+              %i.icon-white.icon-check
+        %td
+          %i.icon-tag
+          = task.name
         %td= "#{task.plan} #{'pomodoro'.pluralize(task.plan)}"

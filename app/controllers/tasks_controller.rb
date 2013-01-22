@@ -6,14 +6,20 @@ class TasksController < ApplicationController
   end
 
   def create
-    @tasks = Task.where(:user_id => current_user.id)
     @task = Task.new(params[:task])
     @task.user = current_user
 
     if @task.save
       redirect_to tasks_path
     else
+      @tasks = Task.where(:user_id => current_user.id)
       render :index
     end
+  end
+
+  def finish
+    task = Task.find(params[:id])
+    task.finish
+    redirect_to tasks_path
   end
 end

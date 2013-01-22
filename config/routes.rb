@@ -7,5 +7,7 @@ Pomodoro::Application.routes.draw do
   match "/auth/:provider/callback" => "sessions#callback"
   match "/logout" => "sessions#destroy", :as => :logout
 
-  resources :tasks
+  resources :tasks do
+    post :finish, :on => :member
+  end
 end

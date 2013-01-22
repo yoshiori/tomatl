@@ -5,4 +5,12 @@ class Task < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :plan, :presence => true, :numericality => true
+
+  def finish
+    update_attribute(:finished_at, Time.now)
+  end
+
+  def finish?
+    !!finished_at
+  end
 end

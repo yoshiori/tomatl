@@ -20,6 +20,6 @@ class TasksController < ApplicationController
   def finish
     task = Task.find(params[:id])
     task.finish
-    redirect_to tasks_path
+    redirect_to :back
   end
 end

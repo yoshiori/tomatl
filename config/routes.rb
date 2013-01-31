@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-Pomodoro::Application.routes.draw do
+Tomato::Application.routes.draw do
 
   root :to => 'root#index'
 

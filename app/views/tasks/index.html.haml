@@ -10,6 +10,7 @@
   %thead
     %tr
       %th.span1 #
+      %th delete
       %th task
       %th plan
       %th now
@@ -24,6 +25,9 @@
           - else
             %a.btn.btn-mini.btn-success
               %i.icon-white.icon-check
+        %td.span1
+          = link_to task_path(task), :method => :delete, :class => %w(btn btn-mini btn-danger) do
+            %i.icon-white.icon-trash
         %td
           %i.icon-tag
           = task.name

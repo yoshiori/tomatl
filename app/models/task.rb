@@ -1,7 +1,7 @@
 class Task < ActiveRecord::Base
   belongs_to :user
 
-  has_many :pomodoros
+  has_many :pomodoros, :dependent => :destroy
 
   attr_accessible :finished_at, :name, :plan
 

@@ -34,5 +34,7 @@
         %td= "#{task.plan} #{'pomodoro'.pluralize(task.plan)}"
         %td= "#{'○' * task.pomodoros.size}"
         %td
-          = form_for [task, task.pomodoros.build] do |f|
-            = f.submit
+          = link_to task_pomodoros_path(task, task.pomodoros.build),
+                    :method => :post,
+                    :class => %w(btn btn-mini btn-primary) do
+            %i.icon-white.icon-plus-sign

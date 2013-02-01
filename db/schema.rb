@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20130131153338) do
 
   create_table "pomodoros", :force => true do |t|
     t.integer  "task_id"
-    t.date     "finished_at"
+    t.datetime "finished_at"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(:version => 20130131153338) do
     t.integer  "user_id"
     t.string   "name"
     t.date     "finished_at"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "plan"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "plan",        :default => 1, :null => false
   end
 
   add_index "tasks", ["user_id"], :name => "index_tasks_on_user_id"

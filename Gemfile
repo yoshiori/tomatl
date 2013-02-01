@@ -29,6 +29,7 @@ group :test, :development do
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'growl', :require => false # for Mac
   gem 'libnotify', :require => false # for *nix
+  gem 'pry-rails'
 end
 
 gem 'jquery-rails'

@@ -3,7 +3,7 @@ class PomodorosController < ApplicationController
 
   def create
     task = Task.find(params[:task_id])
-    task.pomodoros.build
+    task.pomodoros.build(:finished_at => Time.now)
     task.save
     redirect_to :back
   end

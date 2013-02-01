@@ -7,6 +7,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :image
 
       t.timestamps
+
     end
+
+    add_index :users, :uid
   end
 end

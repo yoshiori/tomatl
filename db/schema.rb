@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130117131535) do
+ActiveRecord::Schema.define(:version => 20130131153338) do
+
+  create_table "pomodoros", :force => true do |t|
+    t.integer  "task_id"
+    t.date     "finished_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "pomodoros", ["task_id"], :name => "index_pomodoros_on_task_id"
 
   create_table "tasks", :force => true do |t|
     t.integer  "user_id"

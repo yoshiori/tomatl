@@ -9,5 +9,6 @@ Tomato::Application.routes.draw do
 
   resources :tasks do
     post :finish, :on => :member
+    resources :pomodoros, :only => :create
   end
 end

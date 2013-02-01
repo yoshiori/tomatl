@@ -12,6 +12,8 @@
       %th.span1 #
       %th task
       %th plan
+      %th now
+      %th add
   %tbody
     - @tasks.each do |task|
       %tr
@@ -26,3 +28,7 @@
           %i.icon-tag
           = task.name
         %td= "#{task.plan} #{'pomodoro'.pluralize(task.plan)}"
+        %td= "#{'○' * task.pomodoros.size}"
+        %td
+          = form_for [task, task.pomodoros.build] do |f|
+            = f.submit

@@ -18,4 +18,8 @@ describe Task do
       it { should be_finish }
     end
   end
+
+  describe "#active" do
+
+  end
 end

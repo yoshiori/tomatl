@@ -8,6 +8,11 @@ class Task < ActiveRecord::Base
   validates :name, :presence => true
   validates :plan, :presence => true, :numericality => true
 
+  default_scope order("created_at")
+
+  scope :active, where("finished_at is null")
+  scope :finished, where("finished_at is not null")
+
   def finish
     update_attribute(:finished_at, Time.now)
   end

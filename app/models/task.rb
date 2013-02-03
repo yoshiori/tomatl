@@ -8,10 +8,10 @@ class Task < ActiveRecord::Base
   validates :name, :presence => true
   validates :plan, :presence => true, :numericality => true
 
-  default_scope order("created_at")
+  default_scope order("created_at DESC")
 
   scope :active, where("finished_at is null")
-  scope :finished, where("finished_at is not null")
+  scope :finished, where("finished_at is not null").order("finished_at DESC")
 
   def finish
     update_attribute(:finished_at, Time.now)

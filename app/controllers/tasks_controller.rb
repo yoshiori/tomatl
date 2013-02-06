@@ -2,7 +2,8 @@ class TasksController < ApplicationController
   before_filter :login_required
 
   def index
-    @tasks = Task.where(:user_id => current_user.id)
+    Time.zone = "Asia/Tokyo"
+    @tasks = Task.where(:user_id => current_user.id).this_week
   end
 
   def create

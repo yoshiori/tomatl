@@ -4,9 +4,9 @@
       .alert.alert-error= message
   .input-append
     = f.text_field :name
-    = f.select :plan, (1..9).map{|i| ["#{i} #{'pomodoro'.pluralize(i)}", i]}, {}, :class => :span2
+    = f.select :plan, (1..3).map{|i| ["#{i} #{'pomodoro'.pluralize(i)}", i]}, {}, :class => :span2
     = f.submit "submit", :class => :btn
-
+%hr
 %h1 ACTIVE
 %table.table.table-striped
   %thead
@@ -39,28 +39,31 @@
                     :class => %w(btn btn-mini btn-primary) do
             %i.icon-white.icon-plus-sign
         %td= task.created_at
+%hr
 %h1 FINISHED
-%table.table.table-striped
-  %thead
-    %tr
-      %th.span1 #
-      %th delete
-      %th task
-      %th plan
-      %th now
-      %th finished at
-  %tbody
-    - @tasks.finished.each do |task|
+- @tasks.finished.group_by(&:finished_at).each do |tasks|
+  %h2= tasks.first
+  %table.table.table-striped
+    %thead
       %tr
-        %td.span1
-          %span.btn.btn-mini.btn-success
-            %i.icon-white.icon-check
-        %td.span1
-          = link_to task_path(task), :method => :delete, :class => %w(btn btn-mini btn-danger) do
-            %i.icon-white.icon-trash
-        %td
-          %i.icon-tag
-          = task.name
-        %td= "#{task.plan} #{'pomodoro'.pluralize(task.plan)}"
-        %td= "#{'○' * task.pomodoros.size}"
-        %td= task.finished_at
+        %th.span1 #
+        %th delete
+        %th task
+        %th plan
+        %th now
+        %th finished at
+    %tbody
+      - tasks.last.each do |task|
+        %tr
+          %td.span1
+            %span.btn.btn-mini.btn-success
+              %i.icon-white.icon-check
+          %td.span1
+            = link_to task_path(task), :method => :delete, :class => %w(btn btn-mini btn-danger) do
+              %i.icon-white.icon-trash
+          %td
+            %i.icon-tag
+            = task.name
+          %td= "#{task.plan} #{'pomodoro'.pluralize(task.plan)}"
+          %td= "#{'○' * task.pomodoros.size}"
+          %td= task.finished_at

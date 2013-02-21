@@ -20,4 +20,11 @@ describe User do
       it { should have(3).tasks }
     end
   end
+
+  describe "#pomodoros" do
+    it "When get all pomodoros" do
+      user = FactoryGirl.create(:user)
+      user.should have(4).pomodoros
+    end
+  end
 end

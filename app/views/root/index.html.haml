@@ -1,2 +1,10 @@
 .hero-unit
-  %h1 Hello, Tomato!
+  - if current_user
+    %h1= current_user.name
+    %p
+      %dl.dl-horizontal
+        %dt Your pomodoros count
+        %dd= current_user.pomodoros.size
+    %p= link_to "task &raquo;".html_safe, tasks_path, :class => %w[btn btn-primary btn-large]
+  - else
+    %h1 Hello, Tomato!
